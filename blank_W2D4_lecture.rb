@@ -25,15 +25,14 @@ end
 
 def word_lengths(sentence)
   hash1 = Hash.new(0)
-  arr1 = sentence.split(" ")
-  arr1.each do |el|
+  sentence.each do |el|
     hash1[el] = el.length
   end
   return hash1
 end
 
-# puts word_lengths("this is fun") #=> {"this"=>4, "is"=>2, "fun"=>3}
-# puts word_lengths("When in doubt, leave it out") #=> {"When"=>4, "in"=>2, "doubt,"=>6, "leave"=>5, "it"=>2, "out"=>3}
+puts word_lengths("this is fun") #=> {"this"=>4, "is"=>2, "fun"=>3}
+puts word_lengths("When in doubt, leave it out") #=> {"When"=>4, "in"=>2, "doubt,"=>6, "leave"=>5, "it"=>2, "out"=>3}
 
 ################################################################################
 
@@ -55,23 +54,13 @@ def frequent_letters_solution(string)
 end
 
 def frequent_letters(string)
-  letters = Hash.new(0)
-  more_than_twice = []
-  string.each_char do |char|
-    letters[char] += 1
-  end
-  letters.each do |key, value|
-    if value > 2
-      more_than_twice << key
-    end
-  end
-  return more_than_twice
+
 end
 
-# print frequent_letters('mississippi') #=> ["i", "s"]
-# puts
-# print frequent_letters('bootcamp') #=> []
-# puts
+print frequent_letters('mississippi') #=> ["i", "s"]
+puts
+print frequent_letters('bootcamp') #=> []
+puts
 
 ################################################################################
 
@@ -92,8 +81,8 @@ def unique_elements(arr)
   
 end
 
-# print unique_elements(['a', 'b', 'a', 'a', 'b', 'c']) #=> ["a", "b", "c"]
-# puts
+print unique_elements(['a', 'b', 'a', 'a', 'b', 'c']) #=> ["a", "b", "c"]
+puts
 
 ################################################################################
 
@@ -111,13 +100,13 @@ end
 
 arr1 = ["LeBron James", "Lionel Messi", "Serena Williams"]
 hash1 = {"Serena Williams"=>"tennis", "LeBron James"=>"basketball"}
-# print element_replace(arr1, hash1) # => ["basketball", "Lionel Messi", "tennis"]
-# puts
+print element_replace(arr1, hash1) # => ["basketball", "Lionel Messi", "tennis"]
+puts
 
 arr2 = ["dog", "cat", "mouse"]
 hash2 = {"dog"=>"bork", "cat"=>"meow", "duck"=>"quack"}
-# print element_replace(arr2, hash2) # => ["bork", "meow", "mouse"]
-# puts
+print element_replace(arr2, hash2) # => ["bork", "meow", "mouse"]
+puts
 
 ################################################################################
 
@@ -155,11 +144,7 @@ def square_arr_solution(arr)
 end
 
 def square_arr(arr)
-  res_arr = []
-  arr.each do |num|
-    res_arr << num ** 2
-  end
-  return res_arr
+
 end
 
 p square_arr([1, 2, 3]) #=> [1, 4, 9]
@@ -172,20 +157,11 @@ def square_arr_map_solution(arr)
 end
 
 def square_arr_map(arr)
-  # return arr.map {|num| num ** 2}
-  arr.map do |num|
-    if num.even?
-      num ** 2
-    else
-      num
-    end
-  end
+
 end
 
-p [1, 2, 3].map {|num| num.even? } #=> [2]
-
-# p square_arr_map([1, 2, 3]) #=> [1, 4, 9]
-# p square_arr_map([4, 5, 6]) #=> [16, 25, 36]
+p square_arr_map([1, 2, 3]) #=> [1, 4, 9]
+p square_arr_map([4, 5, 6]) #=> [16, 25, 36]
 
 ################################################################################
 ###################          Enumerable#select            ######################
