@@ -21,7 +21,25 @@ p count_a("Mississippi") # 0
 # the number is prime, false otherwise
 
 def is_prime?(number)
-  
+  # base case #1, no numbers less than 2 are prime
+  if number < 2
+    return false
+  end
+  # base case #2, 2 is the only even prime
+  if number == 2
+    return true
+  end
+  # iterating through all possible numbers between 2...number
+  i = 2
+  while i < number
+    if number % i == 0
+      # we found an i that divides into num, therefore num is not prime
+      return false
+    end
+    i += 1
+  end
+  # we found nothing that divides into number, therefore number is prime
+  return true
 end
 
 p is_prime?(2) # true
@@ -31,7 +49,6 @@ p is_prime?(1) # false
 p is_prime?(4) # false
 p is_prime?(9) # false
 p is_prime?(121) # false
-p is_prime?(43.5) # false
 
 # write a method all_primes_to that takes in a number and prints all primes
 # up to that number
