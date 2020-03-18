@@ -141,25 +141,50 @@ end
 # takes a str and replaces all vowels with "*"
 def censor_words(str)
   i = 0
-  while str < str.length
+  total = ''
+  while i < str.length
+    if 'aeiouAEIOU'.include?(str[i]) # str in 'aeiouAEIOU' => checking if our letter is a vowel
+      total += "*"
+    else #=> run when any letter is not a vowel
+      total += str[i]
+    end
+    i += 1
+  end
+  return total
 end
 
-p censor_words("Hello AJ!") # "H*ll* *J!"
-p censor_words("Abstemiously") # "*bst*m***sly"
-p censor_words("Gravity Falls") # "Gr*v*ty F*lls"
-p censor_words("Feck") # "F*ck"
-p censor_words("Shut the Front Door!") # "Sh*t th* Fr*nt D**r!"
+# p censor_words("Hello AJ!") # "H*ll* *J!"
+# p censor_words("Abstemiously") # "*bst*m***sly"
+# p censor_words("Gravity Falls") # "Gr*v*ty F*lls"
+# p censor_words("Feck") # "F*ck"
+# p censor_words("Shut the Front Door!") # "Sh*t th* Fr*nt D**r!"
 
 
 
 
 
 
-# write a method is_prime? that takes in an number and returns true if
+# write a method is_prime? that takes in an integer and returns true if
 # the number is prime, false otherwise
 
-# def is_prime?(number)
-# end
+def is_prime?(number)
+  if number < 2
+    return false
+  end
+  if number == 2
+    return true
+  end
+  i = 2
+  while i < number
+    if number % i == 0
+      return false
+    end
+    i += 1
+  end
+  return true
+end
+
+# if big_number % little_number == 0 #=> voila you have found a factor
 
 # p is_prime?(2) # true
 # p is_prime?(3) # true
@@ -168,7 +193,6 @@ p censor_words("Shut the Front Door!") # "Sh*t th* Fr*nt D**r!"
 # p is_prime?(4) # false
 # p is_prime?(9) # false
 # p is_prime?(121) # false
-# p is_prime?(43.5) # false
 
 
 
@@ -176,11 +200,17 @@ p censor_words("Shut the Front Door!") # "Sh*t th* Fr*nt D**r!"
 # up to that number
 # HINT: use our is_prime helper method!
 
-#   def all_primes_to(number)
-#   end
+def all_primes_to(number)
+  i = 2
+  while i < number
+    if is_prime?(i)
+      p i
+    end
+    i += 1
+  end
+end
 
-# p all_primes_to(20) #2,3,5,7,11,13,17,19
-
+all_primes_to(20) #2,3,5,7,11,13,17,19
 
 
 
