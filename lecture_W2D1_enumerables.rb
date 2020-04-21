@@ -221,13 +221,29 @@ end
 # longest "ummmm". For example:
 # longest_pause("ummmmmmm") => 8
 
-# def longest_pause(sentence)
-# end
 
-# puts longest_pause("ummmmmmm")
-# puts longest_pause("Hi there, I'm um here for the interview")
-# puts longest_pause("um I'm umm not sure.")
-# puts longest_pause("ummmmm, I'm umm not sure.")
+
+def longest_pause(sentence)
+  words = sentence.split(' ')
+  longest_um = ""
+
+  words.each do |word|
+    if word[0] == 'u' && word[1] == 'm'
+      word.each_char do |char|
+        if char != 'u' || char != 'm'
+          break
+        end
+      end
+      
+    end
+  end
+  return longest_um.length
+end
+
+puts longest_pause("ummmmmmm") #=> 8
+puts longest_pause("Hi there, I'm um here for the interview")
+puts longest_pause("um I'm umm not sure.")
+puts longest_pause("ummmmm, I'm umm not sure.")
 
 
 
