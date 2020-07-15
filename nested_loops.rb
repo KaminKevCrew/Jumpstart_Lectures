@@ -1,24 +1,36 @@
 # Homework
 
-arr = [1, 2, 3, 4, 5]
+# arr = [1, 2, 3, 4, 5]
 
-sum = 0
+# sum = 0
 
-arr.each.with_index do |num, idx|
-  p idx
-  sum += num
-end
-
-p sum
-
-# def to_initials(name)
+# arr.each.with_index do |num, idx|
+#   p idx
+#   sum += num
 # end
+
+# p sum
+
+def to_initials(name)
+  names = name.split(' ')
+  initials = ''
+  names.each do |word|
+    initials += word[0].upcase
+  end
+  return initials
+end
 
 # p to_initials("john travolta") # => "JT"
 # p to_initials("Andrew J Gosling") # => "AJG"
 
-# def format_name(name)
-# end
+def format_name(name)
+  names = name.split(' ')
+  formatted = ''
+  names.each do |word|
+    formatted += word[0].upcase + word[1..-1].downcase + ' '
+  end
+  return formatted[0...-1]
+end
 
 # p format_name("john travolta") # => "John Travolta"
 # p format_name("aVaTAR aANG") # => "Avatar Aang"
@@ -27,12 +39,23 @@ p sum
 # an email is valid if it contains exactly 1 "@" symbol, only alphabetic lowercase letters before the @ symbol, and exactly one "." after the @ symbol
 
 
-# def is_valid_email?(str)
+def is_valid_email?(str)
+  parts = str.split('@')
+  return false if parts.length != 2
+
+  alpha = ("a".."z")
+
+  parts[0].each_char do |char|
+    if !alpha.include?(char)
+      return false
+    end
+  end
   
-# end
+  return parts[1].split('.').length == 2
+end
 
 # p is_valid_email?("abc@xy.z")         # => true
-# p is_valid_email?("jdoe@gmail.com")   # => false
+# p is_valid_email?("jdoe@gmail.com")   # => true
 # p is_valid_email?("jdoe@g@mail.com")  # => false
 # p is_valid_email?("jdoe42@gmail.com") # => false
 # p is_valid_email?("jdoegmail.com")    # => false
@@ -83,7 +106,8 @@ three_d_array = [
   ["Daenerys", "Jon"],
   ["Tyrion", "Tywin"],
   ["Jaime", "Cersei"],
-  ["Bran", "Arya"]
+  ["Bran", "Arya"],
+  ["Rick", "Morty"]
 ]
 
 # p three_d_array[4][1] # => ["Rick", "Morty"][1] => "Morty"
@@ -91,12 +115,19 @@ three_d_array = [
 
 
 
-# def count_a(big_ol_arr)
-  
-  
-# end
+def count_a(big_ol_arr)
+  count = 0
+  big_ol_arr.each do |sub| # slow loop
+    sub.each do |string| # medium loop
+      string.each_char do |char| # fast loop
+        count += 1 if "aA".include?(char)
+      end
+    end
+  end
+  return count
+end
 
-# count_a(three_d_array)
+# p count_a(three_d_array) # 5
 
 
 
@@ -114,11 +145,22 @@ three_d_array = [
 # ]
 
 # two_d_array.each do |sub_arr|
+#   sub_arr.each do |num|
+#     p num
+#   end
 # end
 
 # accomplish same functionality with while loop?
 
-
+# i = 0
+# while i < two_d_array.length
+#   j = 0
+#   while j < two_d_array[i].length
+#     p two_d_array[i][j]
+#     j += 1
+#   end
+#   i += 1
+# end
 
 
 
@@ -140,15 +182,20 @@ three_d_array = [
 
 
 
-# def possible_pairs(arr)
-# end
+def possible_pairs(arr)
+  pairs = []
+  arr.each.with_index do |num1, idx1|
+    arr.each.with_index do |num2, idx2|
+      if idx2 > idx1
+        pairs << [num1, num2]
+      end
+    end
+  end
+  return pairs
+end
 
-# print possible_pairs([1, 2, 3])
-
-
-
-
-# p possible_pairs([ 4, 5, 6, 7])
+# p possible_pairs([1, 2, 3]) #[[1, 2], [1, 3], [2, 3]]
+# p possible_pairs([4, 5, 6, 7]) #[[4, 5], [4, 6], [4, 7], [5, 6], [5, 7], [6, 7]]
 
 
 
