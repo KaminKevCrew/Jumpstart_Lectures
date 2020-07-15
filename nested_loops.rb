@@ -1,15 +1,15 @@
 # Homework
 
-# arr = [1, 2, 3, 4, 5]
+arr = [1, 2, 3, 4, 5]
 
-# sum = 0
+sum = 0
 
-# arr.each.with_index do |num, idx|
-#   p idx
-#   sum += num
-# end
+arr.each.with_index do |num, idx|
+  p idx
+  sum += num
+end
 
-# sum
+p sum
 
 # def to_initials(name)
 # end
@@ -27,19 +27,9 @@
 # an email is valid if it contains exactly 1 "@" symbol, only alphabetic lowercase letters before the @ symbol, and exactly one "." after the @ symbol
 
 
-def is_valid_email?(str)
-  # split by the @ symbol
-  # make sure there are exactly two parts
-  # if not, return false
-
-  # get a range of a to z
-  # check the first part of splitted
-  # every char must be in alphabet
-    # if not, return false
-
-  # split second part by "."
-    # check whether there are only two parts
-end
+# def is_valid_email?(str)
+  
+# end
 
 # p is_valid_email?("abc@xy.z")         # => true
 # p is_valid_email?("jdoe@gmail.com")   # => false
@@ -101,24 +91,12 @@ three_d_array = [
 
 
 
-def count_a(big_ol_arr)
-  # count = 0
-  # big_ol_arr.each do |sub_arr|
-  #   sub_arr.each do |string|
-  #     string.each_char do |char|
-  #       if char.downcase == "a"
-  #         count += 1
-  #       end
-  #     end
-  #   end
-  # end
+# def count_a(big_ol_arr)
+  
+  
+# end
 
-  # return count
-
-  big_ol_arr.flatten.join.split("").count {|char| "aA".include?(char)}
-end
-
-count_a(three_d_array)
+# count_a(three_d_array)
 
 
 
