@@ -13,11 +13,11 @@
 
 def to_initials(name)
   names = name.split(' ')
-  initials = ''
-  names.each do |word|
-    initials += word[0].upcase
+  initials = ""
+  names.each do |namae|
+    initials << namae[0]
   end
-  return initials
+  return initials.upcase
 end
 
 # p to_initials("john travolta") # => "JT"
@@ -25,12 +25,15 @@ end
 
 def format_name(name)
   names = name.split(' ')
-  formatted = ''
-  names.each do |word|
-    formatted += word[0].upcase + word[1..-1].downcase + ' '
+  formatted_names = []
+  names.each do |namae|
+    formatted_names << namae[0].upcase + namae[1..-1].downcase
   end
-  return formatted[0...-1]
+  return formatted_names.join(' ')
 end
+
+# name[0] => 't' name[0].upcase => 'T' 
+# name[1..-1] => 'ravolta'
 
 # p format_name("john travolta") # => "John Travolta"
 # p format_name("aVaTAR aANG") # => "Avatar Aang"
@@ -42,16 +45,11 @@ end
 def is_valid_email?(str)
   parts = str.split('@')
   return false if parts.length != 2
-
-  alpha = ("a".."z")
-
+  alphas = ('a'..'z')
   parts[0].each_char do |char|
-    if !alpha.include?(char)
-      return false
-    end
+    return false if !alphas.include?(char)
   end
-  
-  return parts[1].split('.').length == 2
+  return parts[1].split(".").length == 2
 end
 
 # p is_valid_email?("abc@xy.z")         # => true
@@ -76,11 +74,11 @@ end
 
 # Week 2 Day 2 - Nested Loops and 2D Arrays
 
-# two_d_array = [
-#   [1, 2, 3],
-#   [4, 5, 6],
-#   [7, 8, 9]
-# ]
+two_d_array = [
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9]
+]
 
 # p two_d_array[0][0] # => [1, 2, 3][0] => 1
 # p two_d_array[1][2] # => [4, 5, 6][2] => 6
@@ -117,10 +115,13 @@ three_d_array = [
 
 def count_a(big_ol_arr)
   count = 0
-  big_ol_arr.each do |sub| # slow loop
-    sub.each do |string| # medium loop
-      string.each_char do |char| # fast loop
-        count += 1 if "aA".include?(char)
+  big_ol_arr.each do |sub|
+    sub.each do |name|
+      name.each_char do |char|
+        # count += 1 if 'aA'.include?(char)
+        if 'aA'.include?(char)
+          count += 1
+        end
       end
     end
   end
@@ -138,11 +139,11 @@ end
 
 # nested loops
 
-# two_d_array = [
-#   [1, 2, 3],
-#   [4, 5, 6],
-#   [7, 8, 9]
-# ]
+two_d_array = [
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9]
+]
 
 # two_d_array.each do |sub_arr|
 #   sub_arr.each do |num|
@@ -153,16 +154,14 @@ end
 # accomplish same functionality with while loop?
 
 # i = 0
-# while i < two_d_array.length
+# while i < two_d_array.length # slow loop
 #   j = 0
-#   while j < two_d_array[i].length
+#   while j < two_d_array[i].length # fast loop
 #     p two_d_array[i][j]
 #     j += 1
 #   end
 #   i += 1
 # end
-
-
 
 
 
@@ -184,18 +183,16 @@ end
 
 def possible_pairs(arr)
   pairs = []
-  arr.each.with_index do |num1, idx1|
-    arr.each.with_index do |num2, idx2|
-      if idx2 > idx1
-        pairs << [num1, num2]
-      end
+  arr.each do |num1|
+    arr.each do |num2|
+      pairs << [num1, num2]
     end
   end
   return pairs
 end
 
-# p possible_pairs([1, 2, 3]) #[[1, 2], [1, 3], [2, 3]]
-# p possible_pairs([4, 5, 6, 7]) #[[4, 5], [4, 6], [4, 7], [5, 6], [5, 7], [6, 7]]
+# p possible_pairs([1, 2, 3])
+# p possible_pairs([4, 5, 6, 7])
 
 
 
@@ -211,8 +208,17 @@ end
 
 # takes in an array and returns all unique pairs
 
-# def possible_uniq_pairs(arr)
-# end
+def possible_uniq_pairs(arr)
+  pairs = []
+  arr.each.with_index do |num1, idx1|
+    arr.each.with_index do |num2, idx2|
+      if idx2 > idx1
+        pairs << [num1, num2]
+      end
+    end
+  end
+  return pairs
+end
 
 # p possible_uniq_pairs([1, 2, 3]) # => [[1, 2], [1, 3], [2, 3]]
 
@@ -235,18 +241,22 @@ end
 
 # Define a method, #nested_sum, that takes a 2d_array and returns the sum of all nested elements
 
-# def nested_sum(matrix)
-# end
+def nested_sum(matrix)
+  sum = 0
+  matrix.each do |sub|
+    sub.each do |num|
+      sum += num
+    end
+  end
+  return sum
+end
 
-# my_matrix = [
-#   [1, 2],
-#   [3, 4]
-# ]
+my_matrix = [
+  [1, 2],
+  [3, 4]
+]
 
 # p nested_sum(my_matrix) # => 10
-
-
-
 
 
 
@@ -259,8 +269,9 @@ end
 # own is not a product.
 # pair_product?([3, 1, 5, 6, 7], 15) => true because 3*5 == 15
 
-# def pair_product?(arr, target_product)
-# end
+def pair_product?(arr, target_product)
+
+end
 
 
 # p pair_product?([3, 1, 6], 15) # => false
@@ -273,8 +284,9 @@ end
 
 # given a string, return all possible substrings
 
-# def substrings(str)
-# end
+def substrings(str)
+
+end
 
 # p substring("abc")
 
@@ -287,8 +299,9 @@ end
 
 # given a string, return the longest substring that is the same forwards and backwards (minimum length 3)
 
-# def longest_palindrome(str)
-# end
+def longest_palindrome(str)
+
+end
 
 # p longest_palindrome("abracadabra") # => "aca"
 # p longest_palindrome("i sleep in a racecar bed") # => " racecar "
@@ -302,10 +315,29 @@ end
 
 # primes: 2, 3, 5, 7, 11, 13, 17, 19, 23, 29...
 
-# def prime_gap(gap)
-# end
+def prime_gap(gap)
+
+end
 
 # p prime_gap(2) # => [3, 5]
 # p prime_gap(4) # => [7, 11]
 # p prime_gap(6) # => [23, 29]
 # p prime_gap(24) # => ?????????????
+
+
+# Write a method, my_adv_split() that takes a string, and splits it on a selection of characters.
+
+# Easy mode: split on all vowels
+# Hard mode: let a user input their own chars to split on
+
+def my_adv_split(str)
+
+end
+
+# def my_super_adv_split(str, split_chars)
+
+# end
+
+p my_adv_split("hello") #=> ["h", "ll"]
+
+p my_super_adv_split("holy moly", ["l", "m"]) #=> ["ho", "y ", "o", "y"]

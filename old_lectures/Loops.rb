@@ -1,6 +1,7 @@
 # Homework
 
 def average_of_three(num1, num2, num3)
+  # sum all numbers, divide by n
   return (num1 + num2 + num3) / 3.0
 end
 
@@ -22,7 +23,6 @@ def special_word?(str)
   elsif str[0] == 'c' || str.length.even?
     return true
   end
-  return false
 end
 
 # puts special_word?("charisma") # false
@@ -36,13 +36,6 @@ end
 # while (conditional express is true)
 #     do something
 # end
-
-# num = 0
-# while num < 10
-#   p num
-#   num += 1
-# end
-# p num
 
 
 # # string[]: allows you to search for value
@@ -66,7 +59,7 @@ def count_to(number)
   end
 end
 
-# count_to(1000)
+# count_to(37)
 
 
 
@@ -75,6 +68,7 @@ def count_down(number)
     p number
     number -= 1
   end
+
 end
 
 # count_down(100)
@@ -83,7 +77,7 @@ end
 
 
 
-# string iteration loop
+# # string iteration loop
 # str = "jumpstart is fun!"
 
 # i = 0 # index variable
@@ -92,7 +86,9 @@ end
 #   i += 1
 # end
 
-
+# (ranges, arithmetic operations, determining priority)
+# [indexing, arrays, lists]
+# {hashes, dictionaries}
 
 
 
@@ -100,15 +96,12 @@ end
 
 def count_a(str)
   count = 0
-  idx = 0
-  while idx < str.length
-    # current_character = str[idx] #=> will only a single character
-    # when I call String#include? method, the string that get passed in must have length <= length of the string I'm searching through.
-    if 'aA'.include?(str[idx]) #=> str[idx].downcase == 'a'
-      # str[idx] == 'a' || str[idx] == 'A'
+  i = 0
+  while i < str.length
+    if "aA".include?(str[i]) # str[i] == 'a' || str[i] == 'A'
       count += 1
     end
-    idx += 1
+    i += 1
   end
   return count
 end
@@ -127,14 +120,12 @@ end
 def print_evens(number)
   i = 0
   while i <= number
-    # p i
-    # i += 2
-    
-    if i.even? #=> i % 2 == 0 #=> i % 2 != 1
+    # if i.even?
       p i
-    end
-    i += 1
+    # end
+    i += 2
   end
+  return "finished!"
 end
 
 # print_evens(10)
@@ -147,33 +138,27 @@ end
 
 # # takes a str and replaces all vowels with "*"
 def censor_words(str)
-  vowels = 'aeiou' #=> 'aeiouAEIOU'
-  idx = 0
-  censored = ""
-  while idx < str.length
-    # if vowels.include?(str[idx].downcase)
-    #   str[idx] = '*'
-    # end
-    if vowels.include?(str[idx].downcase)
-      censored << '*' #=> censored += '*'
+  censored = ''
+  vowels = 'aeiouAEIOU'
+  i = 0
+  while i < str.length
+    if vowels.include?(str[i])
+      censored += '*'
     else
-      censored << str[idx]
+      censored << str[i]
     end
-    idx += 1
+    i += 1
   end
-  # return str
   return censored
 end
 
-string = "Hello AJ!"
-
-# p censor_words(string) # "H*ll* *J!"
+# p censor_words("Hello AJ!") # "H*ll* *J!"
 # p censor_words("Abstemiously") # "*bst*m***sly"
 # p censor_words("Gravity Falls") # "Gr*v*ty F*lls"
 # p censor_words("Feck") # "F*ck"
 # p censor_words("Shut the Front Door!") # "Sh*t th* Fr*nt D**r!"
 
-# p string
+
 
 
 
@@ -183,8 +168,6 @@ string = "Hello AJ!"
 
 def is_prime?(number)
   return false if number < 2
-  return true if number == 2
-
   i = 2
   while i < number
     if number % i == 0
@@ -195,13 +178,13 @@ def is_prime?(number)
   return true
 end
 
-# p is_prime?(2) # true
-# p is_prime?(3) # true
-# p is_prime?(97) # true
-# p is_prime?(1) # false
-# p is_prime?(4) # false
-# p is_prime?(9) # false
-# p is_prime?(121) # false
+p is_prime?(2) # true
+p is_prime?(3) # true
+p is_prime?(97) # true
+p is_prime?(1) # false
+p is_prime?(4) # false
+p is_prime?(9) # false
+p is_prime?(121) # false
 
 
 
@@ -209,18 +192,11 @@ end
 # up to that number
 # HINT: use our is_prime helper method!
 
-#   def all_primes_to(number)
-#   end
+def all_primes_to(number)
+  
+end
 
-# p all_primes_to(20) 
-# 2
-# 3
-# 5
-# 7
-# 11
-# 13
-# 17
-# 19
+p all_primes_to(20) #2,3,5,7,11,13,17,19
 
 
 
@@ -231,6 +207,8 @@ end
 # easy mode: you can assume search_term is one character
 # challenge mode: search for more than one character
 # my_include("chris","is") -> true
+
+# HINT: For multiple character search term => some_string[idx1..idx2]
 
 # def my_include?(string, search_term)
 
